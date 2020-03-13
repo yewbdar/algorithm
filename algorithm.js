@@ -56,9 +56,30 @@ const reverseInt = (num) => {
 // eg capitalizeLatter('i love you') = I Love You
 
 const capitalizeLatter = (str) => {
-    let newStr = str.split(' ').map(word => word.substring(0,1).toUpperCase() + word.substring(1));
-    return newStr.join(' ');
+    let newStr = str.split(' ').map(word => word[0].toUpperCase() + word.substring(1)).join(' ');
+    return newStr
 }
 
-console.log(capitalizeLatter('i love you'));
+
+//CHALLENGE 6 : get two num that give the sum of target
+var twoSum = function(nums, target) {
+    let newArry=[]
+    nums.forEach((num,numIndex) => {
+        let diff = target - num
+        if(diff > 0 && diff < target){
+            let diffIndex = nums.indexOf(diff);
+            if(diffIndex >= 0 ){
+                newArry.push(num);
+                newArry.push(nums[diffIndex]);
+                nums.splice(diffIndex);
+                nums.splice(numIndex)
+            }
+        }
+    })
+    return newArry;
+};
+
+console.log(twoSum([1,2,7,5,6],7));
+
+
 
