@@ -79,7 +79,31 @@ var twoSum = function(nums, target) {
     return newArry;
 };
 
-console.log(twoSum([1,2,7,5,6],7));
+// console.log(twoSum([1,2,7,5,6],7));
 
+let getLongSubstring = (str) => {
 
+    let newStr = [];
+    let maxCount = 0;
+    let count=0;
+    str.split('').forEach(s => {
+        if(newStr.indexOf(s) < 0){
+            newStr.push(s);
+            count++;
+            maxCount = newStr.length
+        }else if(newStr.indexOf(s) >= 0){
+           newStr = (newStr.join('').substring(newStr.indexOf(s) + 1, newStr.length)).split('');
+           newStr.push(s);
+
+           if(count > maxCount) {
+               maxCount = count;
+           }
+           count = newStr.length;
+
+        };
+    })
+    return newStr;
+}
+
+console.log(getLongSubstring("abcglkuab"))
 
